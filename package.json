@@ -49,5 +49,5 @@
     "example": "cd example && node index.js",
     "test": "mocha test/index.js"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
