@@ -1,0 +1,53 @@
+{
+  "author": {
+    "name": "Wouter Van den Broeck",
+    "email": "wouter@addith.be"
+  },
+  "bugs": {},
+  "contributors": [],
+  "dependencies": {},
+  "description": "Create fault tolerant promises that retry upon failure according to a retry strategy.",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "jsdoc-to-markdown": "^1.3.3"
+  },
+  "directories": {
+    "lib": "./lib",
+    "example": "./example",
+    "test": "./test"
+  },
+  "engines": {
+    "node": ">=5.6.0"
+  },
+  "keywords": [
+    "promise",
+    "retry strategy",
+    "fault tolerant",
+    "ECMAScript 2015",
+    "es6",
+    "js",
+    "javascript",
+    "node",
+    "node.js"
+  ],
+  "licenses": "MIT",
+  "main": "./lib/index.js",
+  "maintainers": [
+    {
+      "name": "Wouter Van den Broeck",
+      "email": "wouter@addith.be"
+    }
+  ],
+  "name": "retrying-promise",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wouter-vdb/retrying-promise.git"
+  },
+  "scripts": {
+    "docs": "jsdoc2md lib/*.js --template readme.hbs > README.md",
+    "example": "cd example && node index.js",
+    "test": "mocha test/index.js"
+  },
+  "version": "0.0.1"
+}

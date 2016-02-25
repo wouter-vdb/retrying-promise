@@ -1,0 +1,68 @@
+
+# retrying-promise
+
+> Create fault tolerant promises that retry upon failure according to an exponential and/or custom retry strategy.
+
+The implementation of the retry strategies reuses code from the [node-retry][] project.
+
+
+## Usage
+
+Install `retrying-promise`:
+
+```shell
+npm install retrying-promise
+```
+
+Import `retrying-promise`:
+
+    const retryPromise = require('retrying-promise');
+
+The constant `retryPromise` is a function that returns a promise. Use this function similar to how you call the `new Promise()` constructor, but pass it a function that takes three instead of two functions as arguments: `resolve`, `retry` and `reject`.
+
+    var promise = retryPromise(function (resolve, retry, reject) {
+
+        resolve(result);  // the promise resolves normally
+
+        retry(error);     // the promise failed and a retry may be attempted
+
+        reject(error);    // the promise failed and no retry should be attempted
+
+    });
+
+Call the `resolve` function when the promise resolves normally.
+
+Call the `retry` function when the promise failed and a retry may be attempted.
+
+Call the `reject` function when the promise failed and no retry should be attempted.
+
+
+
+## Test
+
+Install [Mocha][].
+
+```shell
+sudo npm install -g mocha
+```
+
+Run tests:
+
+```shell
+npm test
+```
+
+
+## API Reference
+{{#module name="retrying-promise"~}}
+{{>body~}}
+{{>members~}}
+{{/module}}
+
+* * *
+
+&copy; 2016, Wouter Van den Broeck
+
+
+[Mocha]: http://mochajs.org
+[node-retry]: https://github.com/tim-kos/node-retry
