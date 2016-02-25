@@ -1,7 +1,7 @@
 
 # retrying-promise
 
-> Create fault tolerant promises that retry upon failure according to an exponential and/or custom retry strategy.
+> Create fault tolerant promises that retry upon failure according to a retry strategy.
 
 The implementation of the retry strategies reuses code from the [node-retry][] project.
 

@@ -1,8 +1,7 @@
-const chai           = require('chai');
-const chaiAsPromised = require("chai-as-promised");
-//const sinon          = require('sinon');
+const chai            = require('chai');
+const chaiAsPromised  = require("chai-as-promised");
 
-const retryPromise   = require('../lib/index');
+const retryingPromise = require('../lib/index');
 
 const should = chai.should();
 chai.use(chaiAsPromised);
@@ -12,7 +11,7 @@ describe('retrying-promise', function () {
 
     describe('resolve', function () {
         it('should simply resolve', function () {
-            return retryPromise(function (resolve) {
+            return retryingPromise(function (resolve) {
                 setTimeout(() => resolve('ok'), 250);
             }).should.eventually.equal('ok');
         })
@@ -21,7 +20,7 @@ describe('retrying-promise', function () {
     describe('resolve', function () {
         it('should resolve on third attempt', function (done) {
             var retries = 0;
-            retryPromise({ minTimeout: 200, factor: 1 }, function (resolve, retry) {
+            retryingPromise({ minTimeout: 200, factor: 1 }, function (resolve, retry) {
                 retries++;
                 if (retries == 3) { resolve('ok'); }
                 else { retry('nok'); }
@@ -38,16 +37,16 @@ describe('retrying-promise', function () {
 
     describe('reject', function () {
         it('should simply reject', function () {
-            return retryPromise(function (resolve, retry, reject) {
+            return retryingPromise(function (resolve, retry, reject) {
                 setTimeout(() => reject('nok'), 250);
             }).should.eventually.rejectedWith('nok');
         })
     });
 
-    describe('3 retries', function () {
+    describe('retries', function () {
         it('should do three retries and then reject', function (done) {
             var retries = 0;
-            retryPromise({ retries: 3, minTimeout: 200, factor: 1 }, function (resolve, retry) {
+            retryingPromise({ retries: 3, minTimeout: 200, factor: 1 }, function (resolve, retry) {
                 retries++;
                 retry('nok');
             }).then(

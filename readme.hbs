@@ -16,11 +16,11 @@ npm install retrying-promise
 
 Import `retrying-promise`:
 
-    const retryPromise = require('retrying-promise');
+    var retryingPromise = require('retrying-promise');
 
-The constant `retryPromise` is a function that returns a promise. Use this function similar to how you call the `new Promise()` constructor, but pass it a function that takes three instead of two functions as arguments: `resolve`, `retry` and `reject`.
+The value of `retryingPromise` is a function that returns a promise. Use this function similar to how you call the `new Promise()` constructor, but pass it a function that takes three instead of two functions as arguments: `resolve`, `retry` and `reject`.
 
-    var promise = retryPromise(function (resolve, retry, reject) {
+    var promise = retryingPromise(function (resolve, retry, reject) {
 
         resolve(result);  // the promise resolves normally
 
