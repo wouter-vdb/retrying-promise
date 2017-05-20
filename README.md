@@ -18,9 +18,11 @@ Import `retrying-promise`:
 
     const retryPromise = require('retrying-promise');
 
-The constant `retryPromise` is a function that returns a promise. Use this function similar to how you call the `new Promise()` constructor, but pass it a function that takes three instead of two functions as arguments: `resolve`, `retry` and `reject`.
+The constant `retryPromise` is a function that returns a promise. Use this function similar to how you call the `new Promise()` constructor, but pass it a function that takes four arguments: `resolve`, `retry`, `reject` and `attempt`.
 
-    var promise = retryPromise(function (resolve, retry, reject) {
+    var promise = retryPromise(function (resolve, retry, reject, attempt) {
+
+				console.log(`current attempt: ${attempt}`);
 
         resolve(result);  // the promise resolves normally
 
@@ -106,6 +108,7 @@ The function that is called for each attempt to resolve the promise.
 | resolveFn | <code>function</code> | To be called when the promise resolves normally. |
 | retryFn | <code>function</code> | To be called when the promise failed and a retry may be attempted. |
 | [rejectFn] | <code>function</code> | To be called when the promise failed and no retry should be attempted. |
+| attempt | <code>number</code> | The current attempt number. |
 
 
 * * *
